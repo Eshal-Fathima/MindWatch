@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #f0f4f0;
+}
+
+.calm-gradient {
+  background: radial-gradient(1200px 800px at 10% 10%, #f8fbf8 0%, #eef5ef 35%, transparent 70%),
+              radial-gradient(900px 700px at 90% 0%, #f4f8f4 0%, #e6efe6 40%, transparent 70%),
+              linear-gradient(135deg, #eef4ef 0%, #d9e4db 100%);
+}
+
+.card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Subtle glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+}
+
+/* Card variants */
+.card {
+  @apply bg-white/70 rounded-xl card-shadow border border-sage-100;
+}
+.card-soft {
+  @apply bg-white/60 rounded-xl shadow border border-sage-100;
+}
+
+/* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-all duration-200;
+}
+.btn-primary {
+  @apply btn bg-sage-500 text-white hover:bg-sage-600 active:bg-sage-700 shadow-sm;
+}
+.btn-quiet {
+  @apply btn bg-white/70 text-sage-700 hover:bg-white active:bg-sage-50 border border-sage-200;
+}
+
+/* Headings */
+.heading {
+  @apply text-sage-800 font-semibold;
+}
+.subtle {
+  @apply text-sage-500;
+}
