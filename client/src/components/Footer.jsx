@@ -14,7 +14,7 @@ const Footer = () => {
           
           <div className="text-center md:text-right">
             <p className="text-sm text-sage-600">
-              © 2024 MindWatch. Your mental health companion.
+              © 2025 MindWatch. Your mental health companion.
             </p>
             <p className="text-xs text-sage-500 mt-1">
               Remember: You're not alone. Reach out if you need help.
@@ -27,3 +27,8 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+
+
+

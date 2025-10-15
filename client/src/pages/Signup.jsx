@@ -30,6 +30,13 @@ const Signup = () => {
     setIsLoading(true);
     
     // TODO: Implement actual signup logic
+    // Persist combined name for greeting
+    const fullName = `${formData.firstName} ${formData.lastName}`.trim();
+    if (fullName) {
+      try {
+        localStorage.setItem('mw:name', fullName);
+      } catch {}
+    }
     setTimeout(() => {
       setIsLoading(false);
       navigate('/dashboard');
@@ -194,3 +201,8 @@ const Signup = () => {
 };
 
 export default Signup;
+
+
+
+
+

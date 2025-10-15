@@ -10,7 +10,7 @@ const Navbar = ({ isAuthenticated = false }) => {
   };
 
   return (
-    <nav className="glass border-b border-sage-200/60">
+    <nav className="glass border-b border-sage-200/60 hidden">{/* Navbar hidden in new calm UI */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -37,10 +37,16 @@ const Navbar = ({ isAuthenticated = false }) => {
                 Journal
               </Link>
               <Link 
-                to="/visualization" 
+                to="/productivity" 
                 className="text-sage-700 hover:bg-sage-100/60 active:bg-sage-100 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
-                Insights
+                Productivity
+              </Link>
+              <Link 
+                to="/quick" 
+                className="text-sage-700 hover:bg-sage-100/60 active:bg-sage-100 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                Quick Tabs
               </Link>
               <Link 
                 to="/settings" 
@@ -63,3 +69,8 @@ const Navbar = ({ isAuthenticated = false }) => {
 };
 
 export default Navbar;
+
+
+
+
+

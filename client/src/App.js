@@ -8,7 +8,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Journal from './pages/Journal';
-import Visualization from './pages/Visualization';
+import Productivity from './pages/Productivity';
+import Quick from './pages/Quick';
 import Settings from './pages/Settings';
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
           <Route path="/journal" element={<Layout><Journal /></Layout>} />
-          <Route path="/visualization" element={<Layout><Visualization /></Layout>} />
+          <Route path="/productivity" element={<Layout><Productivity /></Layout>} />
+          <Route path="/quick" element={<Layout><Quick /></Layout>} />
           <Route path="/settings" element={<Layout><Settings /></Layout>} />
         </Routes>
       </div>
@@ -30,3 +32,7 @@ function App() {
 }
 
 export default App;
+
+
+
+
