@@ -7,13 +7,13 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-2 mb-4 md:mb-0">
             <div className="w-6 h-6 bg-sage-500 rounded-full flex items-center justify-center shadow">
-              <span className="text-white font-bold text-xs">MW</span>
+              <span className="text-black font-bold text-sm">MW</span>
             </div>
-            <span className="text-sage-700 font-medium">MindWatch</span>
+            <span className="text-black font-medium font-pacifico">MindWatch</span>
           </div>
           
           <div className="text-center md:text-right">
-            <p className="text-sm text-sage-600">
+            <p className="text-sm text-black">
               © 2025 MindWatch. Your mental health companion.
             </p>
             <p className="text-xs text-sage-500 mt-1">

@@ -64,8 +64,8 @@ const Productivity = () => {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold text-high-contrast mb-2">Productivity</h1>
-        <p className="text-medium-contrast text-lg">Pomodoro timer and Focus Mode for deep work.</p>
+        <h1 className="text-4xl font-bold text-black mb-2">Productivity</h1>
+        <p className="text-black text-lg">Pomodoro timer and Focus Mode for deep work.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -97,43 +97,43 @@ const Productivity = () => {
         </div>
 
         {/* Focus Mode */}
-        <div className="card p-8 flex flex-col justify-between">
-          <div className="text-center mb-6">
-            <div className="text-high-contrast text-2xl font-extrabold">FOCUS MODE</div>
-          </div>
-
-          <div className="text-center mb-2">
-            <div className="text-medium-contrast text-base mb-6">
-              When you enter focus mode, fullscreen turns on to reduce distractions.
+        <div className="card p-8 flex flex-col h-full justify-center items-center">
+          <div className="w-full max-w-md flex flex-col flex-1 justify-center items-center">
+            <div className="text-center mb-6">
+              <div className="text-high-contrast text-2xl font-extrabold">FOCUS MODE</div>
             </div>
-            {!isFocusMode ? (
-              <button onClick={handleEnterFocus} className="btn-primary text-xl px-10 py-4 w-full sm:w-auto">
-                Enter Focus Mode
-              </button>
-            ) : (
-              <div className="space-y-4">
-                <div className="text-high-contrast text-lg font-medium">
-                  Focus Mode Active
-                </div>
-                <button onClick={handleExitFocus} className="btn-quiet text-xl px-10 py-4 w-full sm:w-auto">
-                  Exit Focus Mode
+            <div className="text-center mb-2 w-full">
+              <div className="text-medium-contrast text-base mb-6">
+                When you enter focus mode, fullscreen turns on to reduce distractions.
+              </div>
+              {!isFocusMode ? (
+                <button onClick={handleEnterFocus} className="btn-primary text-xl px-10 py-4 w-full sm:w-auto">
+                  Enter Focus Mode
                 </button>
+              ) : (
+                <div className="space-y-4">
+                  <div className="text-high-contrast text-lg font-medium">
+                    Focus Mode Active
+                  </div>
+                  <button onClick={handleExitFocus} className="btn-quiet text-xl px-10 py-4 w-full sm:w-auto">
+                    Exit Focus Mode
+                  </button>
+                </div>
+              )}
+            </div>
+            {isFocusMode && (
+              <div className="mt-6 p-6 rounded-lg border border-slate-600/60 bg-slate-700/40 w-full">
+                <div className="text-center">
+                  <div className="text-medium-contrast text-base mb-3">Focus Mode Features:</div>
+                  <ul className="text-label text-sm space-y-2">
+                    <li>• Fullscreen distraction-free environment</li>
+                    <li>• Clean, minimal interface</li>
+                    <li>• Timer integration</li>
+                  </ul>
+                </div>
               </div>
             )}
           </div>
-
-          {isFocusMode && (
-            <div className="mt-6 p-6 rounded-lg border border-slate-600/60 bg-slate-700/40">
-              <div className="text-center">
-                <div className="text-medium-contrast text-base mb-3">Focus Mode Features:</div>
-                <ul className="text-label text-sm space-y-2">
-                  <li>• Fullscreen distraction-free environment</li>
-                  <li>• Clean, minimal interface</li>
-                  <li>• Timer integration</li>
-                </ul>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

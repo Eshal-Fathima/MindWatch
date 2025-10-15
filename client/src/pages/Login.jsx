@@ -42,13 +42,13 @@ const Login = () => {
         {/* Header */}
         <div className="text-center">
           <div className="mx-auto h-16 w-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
-            <span className="text-white font-bold text-2xl">MW</span>
+            <span className="text-black font-extrabold text-3xl">MW</span>
           </div>
           <h2 className="mt-6 text-3xl font-bold text-white">
             Welcome back
           </h2>
           <p className="mt-2 text-sm text-slate-300">
-            Sign in to your MindWatch account
+            Sign in to your <span className="font-pacifico text-black">MindWatch</span> account
           </p>
         </div>
 

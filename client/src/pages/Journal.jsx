@@ -29,10 +29,10 @@ const Journal = () => {
     <div className="max-w-6xl mx-auto">
       {/* Header */}
       <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold text-high-contrast mb-2">
+        <h1 className="text-4xl font-bold text-black mb-2">
           Your Journal
         </h1>
-        <p className="text-medium-contrast text-lg">
+        <p className="text-black text-lg">
           Reflect on your thoughts, feelings, and experiences. Your personal space for self-discovery.
         </p>
       </div>

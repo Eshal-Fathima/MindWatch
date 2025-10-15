@@ -49,13 +49,13 @@ const Signup = () => {
         {/* Header */}
         <div className="text-center">
           <div className="mx-auto h-16 w-16 bg-sage-500 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-2xl">MW</span>
+            <span className="text-black font-extrabold text-3xl">MW</span>
           </div>
           <h2 className="mt-6 text-3xl font-bold text-sage-700">
             Create your account
           </h2>
           <p className="mt-2 text-sm text-sage-600">
-            Join MindWatch and start your mental health journey
+            Join <span className="font-pacifico text-black">MindWatch</span> and start your mental health journey
           </p>
         </div>
 

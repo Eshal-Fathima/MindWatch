@@ -3,21 +3,34 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+.font-pacifico {
+  font-family: 'Pacifico', cursive;
+}
+
+.font-satisfy {
+  font-family: 'Satisfy', cursive;
+}
+
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: linear-gradient(135deg, #ceaf7a 0%, #f6cb8a 25%, #c39154 50%, #c2905e 75%, #efb684 100%);
+  background: linear-gradient(135deg, #F4EEE0 0%, #D3B88C 30%, #E07A5F 60%, #A44A3F 100%);
+  color: #4B5842;
   min-height: 100vh;
 }
 
 [data-theme="light"] body {
-  background: linear-gradient(135deg, #f3e9dc 0%, #f1e4d3 50%, #e8dccb 100%);
+  background: linear-gradient(135deg, #F4EEE0 0%, #D3B88C 50%, #E07A5F 100%);
+  color: #4B5842;
 }
 
 /* Removed custom cursor animations */
 
-.calm-gradient {
-  background: linear-gradient(135deg, #c59f77 0%, #f09b46 25%, #cf9865 50%, #d48641 75%, #f7a553 100%);
+
+.fall-gradient {
+  background: linear-gradient(135deg, #F4EEE0 0%, #D3B88C 30%, #E07A5F 60%, #A44A3F 100%);
 }
 
 .card-shadow {
@@ -26,17 +39,17 @@ body {
 
 /* Dark glass effect */
 .glass {
-  background: rgba(100, 85, 70, 0.45);
+  background: rgba(212, 184, 140, 0.45); /* gold, semi-transparent */
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border: 1px solid rgba(255, 245, 235, 0.12);
+  border: 1px solid rgba(228, 122, 95, 0.12); /* pumpkin */
 }
 
 .glass-dark {
-  background: rgba(50, 44, 36, 0.90);
+  background: rgba(164, 74, 63, 0.90); /* maple red, semi-transparent */
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border: 1px solid rgba(255, 245, 235, 0.08);
+  border: 1px solid rgba(212, 184, 140, 0.08); /* gold */
 }
 
 /* Card variants */
@@ -73,7 +86,7 @@ body {
 .bg-blue-600 { background-color: #8b5e34 !important; }
 .hover\:bg-blue-700:hover { background-color: #774c2a !important; }
 .active\:bg-blue-800:active { background-color: #633f22 !important; }
-.text-blue-400 { color: #f5f3f0 !important; }
+.text-blue-400 { color: #000000 !important; }
 .focus\:ring-blue-500:focus { --tw-ring-color: #a27752 !important; }
 
 /* Headings */

@@ -28,9 +28,9 @@ const Layout = ({ children }) => {
             {/* Logo */}
             <Link to="/dashboard" className="flex items-center space-x-2 group">
               <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center shadow-sm group-hover:shadow transition-shadow">
-                <span className="text-white font-bold text-sm">MW</span>
+                <span className="text-black font-extrabold text-lg">MW</span>
               </div>
-              <span className="text-xl font-semibold text-white group-hover:text-blue-300 transition-colors">MindWatch</span>
+              <span className="text-xl font-pacifico text-black transition-colors">MindWatch</span>
             </Link>
 
             {/* Hamburger Menu Button */}
@@ -84,9 +84,9 @@ const Layout = ({ children }) => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
               <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center shadow">
-                <span className="text-white font-bold text-xs">MW</span>
+                <span className="text-black font-bold text-sm">MW</span>
               </div>
-              <span className="text-slate-300 font-medium">MindWatch</span>
+              <span className="text-black font-medium font-pacifico">MindWatch</span>
             </div>
             
             <div className="text-center md:text-right">

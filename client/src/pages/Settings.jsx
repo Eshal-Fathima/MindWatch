@@ -54,10 +54,10 @@ const Settings = () => {
     <div className="max-w-4xl mx-auto">
       {/* Header */}
       <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold text-white mb-2">
+        <h1 className="text-4xl font-bold text-black mb-2">
           Settings ⚙️
         </h1>
-        <p className="text-slate-300 text-lg">
+        <p className="text-black text-lg">
           Customize your MindWatch experience and manage your preferences.
         </p>
       </div>

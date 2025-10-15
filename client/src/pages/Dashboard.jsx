@@ -24,10 +24,10 @@ const Dashboard = () => {
     <div className="max-w-6xl mx-auto">
       {/* Welcome Section */}
       <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold text-high-contrast mb-2">
+        <h1 className="text-4xl font-bold text-black mb-2">
           {userName ? `Welcome back, ${userName}` : 'Welcome back'}
         </h1>
-        <p className="text-medium-contrast text-lg">
+        <p className="text-black text-lg">
           How are you feeling today? Let's check in with your mental health.
         </p>
       </div>
