@@ -36,28 +36,39 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-400/20 to-amber-600/20 rounded-full blur-3xl floating"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-yellow-400/20 to-orange-600/20 rounded-full blur-3xl floating" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-red-400/10 to-orange-600/10 rounded-full blur-3xl floating" style={{animationDelay: '4s'}}></div>
+      </div>
 
       <div className="max-w-md w-full space-y-8 relative z-10">
-        {/* Header */}
-        <div className="text-center">
-          <div className="mx-auto h-16 w-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
-            <span className="text-black font-extrabold text-3xl">MW</span>
+        {/* Header with Updated Styling */}
+        <div className="text-center fade-in">
+          <div className="mx-auto h-24 w-24 bg-gradient-to-br from-orange-500 via-amber-600 to-yellow-600 rounded-full flex items-center justify-center shadow-2xl floating pulse-glow relative">
+            {/* MW letters are now solid black */}
+            <span className="text-black font-extrabold text-4xl relative z-10">MW</span>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-500 via-amber-600 to-yellow-600 opacity-75 blur-lg"></div>
           </div>
-          <h2 className="mt-6 text-3xl font-bold text-white">
-            Welcome back
+
+          {/* Title is now completely black */}
+          <h2 className="mt-8 text-5xl font-bold text-black scale-in">
+            Welcome to MindWatch
           </h2>
-          <p className="mt-2 text-sm text-slate-300">
+
+          <p className="mt-6 text-xl text-black fade-in-delay-1 font-medium">
             Sign in to your <span className="font-pacifico text-black">MindWatch</span> account
           </p>
         </div>
 
-        {/* Login Form with Dark Background */}
-        <div className="login-bg rounded-2xl p-8 shadow-2xl">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-slate-200">
+        {/* Login Form with Enhanced Styling */}
+        <div className="login-bg rounded-3xl p-10 shadow-2xl scale-in backdrop-blur-xl border border-white/10">
+          <form className="space-y-8" onSubmit={handleSubmit}>
+            <div className="space-y-6">
+              <div className="fade-in-delay-2">
+                <label htmlFor="name" className="block text-sm font-semibold text-slate-200 mb-3">
                   Name
                 </label>
                 <input
@@ -68,12 +79,12 @@ const Login = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="mt-1 appearance-none relative block w-full px-3 py-2 border border-slate-600 placeholder-slate-400 text-slate-200 bg-slate-700/50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  className="mt-1 appearance-none relative block w-full px-4 py-3 border border-slate-600/50 placeholder-slate-400 text-slate-200 bg-slate-700/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 focus:z-10 sm:text-sm transition-all duration-300 hover:bg-slate-700/40"
                   placeholder="Enter your name"
                 />
               </div>
-              <div>
-                <label htmlFor="reddit" className="block text-sm font-medium text-slate-200">
+              <div className="fade-in-delay-3">
+                <label htmlFor="reddit" className="block text-sm font-semibold text-slate-200 mb-3">
                   Reddit username (optional)
                 </label>
                 <input
@@ -83,12 +94,12 @@ const Login = () => {
                   autoComplete="off"
                   value={formData.reddit}
                   onChange={handleChange}
-                  className="mt-1 appearance-none relative block w-full px-3 py-2 border border-slate-600 placeholder-slate-400 text-slate-200 bg-slate-700/50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  className="mt-1 appearance-none relative block w-full px-4 py-3 border border-slate-600/50 placeholder-slate-400 text-slate-200 bg-slate-700/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 focus:z-10 sm:text-sm transition-all duration-300 hover:bg-slate-700/40"
                   placeholder="Enter your Reddit username"
                 />
               </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-slate-200">
+              <div className="fade-in-delay-4">
+                <label htmlFor="email" className="block text-sm font-semibold text-slate-200 mb-3">
                   Email address
                 </label>
                 <input
@@ -99,12 +110,12 @@ const Login = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="mt-1 appearance-none relative block w-full px-3 py-2 border border-slate-600 placeholder-slate-400 text-slate-200 bg-slate-700/50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  className="mt-1 appearance-none relative block w-full px-4 py-3 border border-slate-600/50 placeholder-slate-400 text-slate-200 bg-slate-700/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 focus:z-10 sm:text-sm transition-all duration-300 hover:bg-slate-700/40"
                   placeholder="Enter your email"
                 />
               </div>
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-slate-200">
+              <div className="fade-in-delay-4">
+                <label htmlFor="password" className="block text-sm font-semibold text-slate-200 mb-3">
                   Password
                 </label>
                 <input
@@ -115,7 +126,7 @@ const Login = () => {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="mt-1 appearance-none relative block w-full px-3 py-2 border border-slate-600 placeholder-slate-400 text-slate-200 bg-slate-700/50 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  className="mt-1 appearance-none relative block w-full px-4 py-3 border border-slate-600/50 placeholder-slate-400 text-slate-200 bg-slate-700/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 focus:z-10 sm:text-sm transition-all duration-300 hover:bg-slate-700/40"
                   placeholder="Enter your password"
                 />
               </div>
@@ -141,19 +152,22 @@ const Login = () => {
               </div>
             </div>
 
-            <div>
+            <div className="fade-in-delay-4">
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                className="group relative w-full flex justify-center py-4 px-8 border border-transparent text-xl font-bold rounded-2xl text-white bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 hover:from-orange-700 hover:via-amber-700 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 btn-animate shadow-2xl hover:shadow-3xl"
               >
                 {isLoading ? (
                   <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Signing in...
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
+                    <span>Signing in...</span>
                   </div>
                 ) : (
-                  'Sign in'
+                  <span className="flex items-center space-x-3">
+                    <span>Sign in</span>
+                    <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </span>
                 )}
               </button>
             </div>
@@ -167,15 +181,6 @@ const Login = () => {
               </span>
             </div>
           </form>
-
-          {/* Demo Credentials */}
-          <div className="mt-6 p-4 bg-slate-700/50 rounded-lg border border-slate-600">
-            <h4 className="text-sm font-medium text-slate-200 mb-2">Demo Credentials</h4>
-            <p className="text-xs text-slate-400">
-              Email: demo@mindwatch.com<br />
-              Password: demo123
-            </p>
-          </div>
         </div>
       </div>
     </div>
@@ -183,4 +188,3 @@ const Login = () => {
 };
 
 export default Login;
-

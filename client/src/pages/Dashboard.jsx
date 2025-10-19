@@ -4,6 +4,7 @@ const Dashboard = () => {
   // Dashboard now focuses on explanation + quick links
 
   const [userName, setUserName] = useState('');
+
   useEffect(() => {
     try {
       const stored = localStorage.getItem('mw:name');
@@ -21,47 +22,122 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto">
-      {/* Welcome Section */}
-      <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold text-black mb-2">
-          {userName ? `Welcome back, ${userName}` : 'Welcome back'}
+    <div className="max-w-7xl mx-auto">
+      {/* Heading Section */}
+      <div className="mb-12 text-center fade-in">
+        <h1 className="text-5xl font-bold text-black mb-4">
+          Track. Reflect. Improve.
         </h1>
-        <p className="text-black text-lg">
-          How are you feeling today? Let's check in with your mental health.
+        <p className="text-black text-xl max-w-2xl mx-auto leading-relaxed">
+          Breathe — you’re here, and that’s what matters.
         </p>
       </div>
 
-      {/* Hero Explanation */}
-      <section className="card p-8 mb-8 text-center">
-        <h2 className="text-2xl font-semibold text-high-contrast mb-4">What is MindWatch?</h2>
-        <p className="text-medium-contrast max-w-3xl mx-auto">
-          MindWatch helps you understand your mental well‑being with simple journaling and focused routines.
-          Track feelings, reduce distractions, and build healthy habits with a calm, minimal interface.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-left">
-          <div className="p-4 rounded-lg bg-slate-700/40 border border-slate-600/40">
-            <h3 className="text-high-contrast font-medium mb-2">Why check in?</h3>
-            <p className="text-medium-contrast text-sm">Regular check‑ins make patterns visible, so small steps can create real change.</p>
-          </div>
-          <div className="p-4 rounded-lg bg-slate-700/40 border border-slate-600/40">
-            <h3 className="text-high-contrast font-medium mb-2">Cut distractions</h3>
-            <p className="text-medium-contrast text-sm">Reducing noise protects your attention—helping you feel calmer and get more done.</p>
-          </div>
-          <div className="p-4 rounded-lg bg-slate-700/40 border border-slate-600/40">
-            <h3 className="text-high-contrast font-medium mb-2">Small, steady steps</h3>
-            <p className="text-medium-contrast text-sm">Gentle routines like journaling and Pomodoro build momentum without pressure.</p>
+      {/* Hero Section with Modern Layout */}
+      <section className="relative mb-12">
+        <div className="card-hover card p-10 text-center scale-in">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-semibold text-high-contrast mb-6">
+              What is MindWatch?
+            </h2>
+            <p className="text-medium-contrast text-lg leading-relaxed mb-8">
+              MindWatch helps you understand your mental well-being with intelligent journaling, 
+              mood tracking, and focused productivity tools. Build healthy habits with our 
+              calm, distraction-free interface.
+            </p>
           </div>
         </div>
-        <div className="mt-8 text-label text-sm">Your mind matters. A little care goes a long way.</div>
       </section>
 
-      {/* Centered CTAs */}
-      <div className="p-6 flex items-center justify-center">
-        <div className="flex flex-wrap gap-4 justify-center">
-          <a href="/journal" className="btn-primary">Open Journal</a>
-          <a href="/productivity" className="btn-quiet">Productivity</a>
-          <a href="/settings" className="btn-quiet">Settings</a>
+      {/* Feature Cards with Staggered Animation */}
+      <div className="mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="stagger-item card-hover card p-8 text-center group">
+            <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <span className="text-2xl">🧠</span>
+            </div>
+            <h3 className="text-xl font-semibold text-high-contrast mb-4">
+              Smart Insights
+            </h3>
+            <p className="text-medium-contrast leading-relaxed">
+              AI-powered analysis of your mood patterns and personalized recommendations 
+              for better mental health.
+            </p>
+          </div>
+
+          <div className="stagger-item card-hover card p-8 text-center group">
+            <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <span className="text-2xl">📝</span>
+            </div>
+            <h3 className="text-xl font-semibold text-high-contrast mb-4">
+              Guided Journaling
+            </h3>
+            <p className="text-medium-contrast leading-relaxed">
+              Thoughtful prompts and reflection tools to help you process emotions 
+              and track your mental wellness journey.
+            </p>
+          </div>
+
+          <div className="stagger-item card-hover card p-8 text-center group">
+            <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <span className="text-2xl">⚡</span>
+            </div>
+            <h3 className="text-xl font-semibold text-high-contrast mb-4">
+              Focus Mode
+            </h3>
+            <p className="text-medium-contrast leading-relaxed">
+              Distraction-free productivity tools with Pomodoro timers and 
+              meditation features for deep work.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Actions with Modern Design */}
+      <div className="mb-12">
+        <h3 className="text-3xl font-bold text-black text-center mb-10">
+          Quick Actions
+        </h3>
+        <div className="flex flex-wrap justify-center gap-6">
+          <a 
+            href="/journal" 
+            className="group btn-animate btn-quiet px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          >
+            <span className="flex items-center space-x-3">
+              <span>📖</span>
+              <span>Start Journaling</span>
+            </span>
+          </a>
+
+          <a 
+            href="/mood-tracker" 
+            className="group btn-animate btn-quiet px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          >
+            <span className="flex items-center space-x-3">
+              <span>📊</span>
+              <span>View Analytics</span>
+            </span>
+          </a>
+
+          <a 
+            href="/productivity" 
+            className="group btn-animate btn-quiet px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          >
+            <span className="flex items-center space-x-3">
+              <span>⏰</span>
+              <span>Focus Mode</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      {/* Inspirational Quote */}
+      <div className="text-center fade-in-delay-4">
+        <div className="card p-8 max-w-3xl mx-auto">
+          <blockquote className="text-xl italic text-medium-contrast mb-4">
+            "Your mind matters. A little care goes a long way."
+          </blockquote>
+          <cite className="text-label text-sm">— MindWatch Team</cite>
         </div>
       </div>
     </div>
@@ -69,4 +145,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

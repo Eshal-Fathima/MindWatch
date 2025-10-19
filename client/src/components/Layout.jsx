@@ -13,6 +13,7 @@ const Layout = ({ children }) => {
   const menuItems = [
     { path: '/dashboard', label: 'Dashboard' },
     { path: '/journal', label: 'Journal' },
+    { path: '/mood-tracker', label: 'Mood Tracker' },
     { path: '/productivity', label: 'Productivity' },
     { path: '/quick', label: 'Quick' },
     { path: '/settings', label: 'Settings' },
@@ -36,7 +37,7 @@ const Layout = ({ children }) => {
             {/* Hamburger Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700/50 transition-colors"
+              className="p-2 rounded-md text-black hover:text-gray-800 hover:bg-slate-700/50 transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -54,14 +55,14 @@ const Layout = ({ children }) => {
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex items-center space-x-3 px-3 py-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700/50 transition-colors"
+                  className="flex items-center space-x-3 px-3 py-2 rounded-md text-black hover:text-gray-800 hover:bg-slate-700/50 transition-colors"
                 >
                   <span>{item.label}</span>
                 </Link>
               ))}
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center space-x-3 px-3 py-2 rounded-md text-red-400 hover:text-red-300 hover:bg-red-900/20 transition-colors"
+                className="w-full flex items-center space-x-3 px-3 py-2 rounded-md text-black hover:text-gray-800 hover:bg-slate-700/50 transition-colors"
               >
                 <span className="text-lg">🚪</span>
                 <span>Logout</span>
