@@ -5,30 +5,43 @@ const JournalForm = ({ onSubmit }) => {
   const [entry, setEntry] = useState('');
   const [mood, setMood] = useState('');
   const [tags, setTags] = useState('');
-  const [date, setDate] = useState(new Date().toISOString().split('T')[0]); // default today
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [isSaving, setIsSaving] = useState(false);
 
-  const handleSubmit = (e) => {
+  // ✅ Make handleSubmit guaranteed synchronous wrapper
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Form submit clicked!', { title, entry, mood }); 
+
+    if (!title || !entry || !mood) return;
 
     const journalData = {
       title,
       entry,
       mood,
       tags: tags.split(',').map(tag => tag.trim()).filter(tag => tag),
-      date, // use selected date
-      timestamp: new Date().toISOString()
+      date,
+      timestamp: new Date().toISOString(),
     };
 
-    if (onSubmit) {
-      onSubmit(journalData);
-    }
+    try {
+      setIsSaving(true);
+      if (onSubmit && typeof onSubmit === 'function') {
+        // ✅ wrap in Promise.resolve to ensure it always works
+        await Promise.resolve(onSubmit(journalData));
+      }
+    } catch (err) {
+      console.error('Error submitting:', err);
+    } finally {
+      setIsSaving(false);
 
-    // Reset form
-    setTitle('');
-    setEntry('');
-    setMood('');
-    setTags('');
-    setDate(new Date().toISOString().split('T')[0]);
+      // ✅ Reset form AFTER submit finishes
+      setTitle('');
+      setEntry('');
+      setMood('');
+      setTags('');
+      setDate(new Date().toISOString().split('T')[0]);
+    }
   };
 
   const moodOptions = [
@@ -39,93 +52,79 @@ const JournalForm = ({ onSubmit }) => {
     { value: 'sad', label: 'Sad' },
     { value: 'anxious', label: 'Anxious' },
     { value: 'angry', label: 'Angry' },
-    { value: 'overwhelmed', label: 'Overwhelmed' }
+    { value: 'overwhelmed', label: 'Overwhelmed' },
   ];
 
   return (
     <div className="card p-6">
       <h3 className="text-lg font-semibold text-high-contrast mb-4">New Journal Entry</h3>
-      
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Date */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-2">
           <label className="text-sm font-medium text-label">Date:</label>
           <input
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="px-3 py-2 border border-slate-600 bg-slate-100 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="px-3 py-2 border border-slate-600 bg-slate-100 text-black rounded-md"
           />
         </div>
 
-        {/* Title */}
         <div>
-          <label className="block text-sm font-medium text-label mb-2">
-            Entry Title
-          </label>
+          <label className="block text-sm font-medium text-label mb-2">Entry Title</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Give your entry a title..."
-            className="w-full px-3 py-2 border border-slate-600 bg-slate-100 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-slate-600 bg-slate-100 text-black rounded-md"
             required
           />
         </div>
 
-        {/* Mood Selection */}
         <div>
-          <label className="block text-sm font-medium text-label mb-2">
-            How are you feeling today?
-          </label>
+          <label className="block text-sm font-medium text-label mb-2">Mood</label>
           <select
             value={mood}
             onChange={(e) => setMood(e.target.value)}
-            className="w-full px-3 py-2 border border-slate-600 bg-slate-100 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-slate-600 bg-slate-100 text-black rounded-md"
             required
           >
             <option value="" disabled>Select a mood</option>
-            {moodOptions.map((option) => (
-              <option key={option.value} value={option.value}>{option.label}</option>
+            {moodOptions.map((o) => (
+              <option key={o.value} value={o.value}>{o.label}</option>
             ))}
           </select>
         </div>
 
-        {/* Journal Entry */}
         <div>
-          <label className="block text-sm font-medium text-label mb-2">
-            What's on your mind?
-          </label>
+          <label className="block text-sm font-medium text-label mb-2">What's on your mind?</label>
           <textarea
             value={entry}
             onChange={(e) => setEntry(e.target.value)}
-            placeholder="Write about your day, thoughts, feelings, or anything you'd like to remember..."
-            className="w-full h-32 px-3 py-2 border border-slate-600 bg-slate-700/50 text-slate-200 placeholder-slate-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+            placeholder="Write about your day..."
+            className="w-full h-32 px-3 py-2 border border-slate-600 bg-slate-700/50 text-slate-200 rounded-md"
             required
           />
         </div>
 
-        {/* Tags */}
         <div>
-          <label className="block text-sm font-medium text-label mb-2">
-            Tags (optional)
-          </label>
+          <label className="block text-sm font-medium text-label mb-2">Tags (optional)</label>
           <input
             type="text"
             value={tags}
             onChange={(e) => setTags(e.target.value)}
-            placeholder="work, family, exercise, etc. (comma separated)"
-            className="w-full px-3 py-2 border border-slate-600 bg-slate-700/50 text-slate-200 placeholder-slate-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="work, family, etc."
+            className="w-full px-3 py-2 border border-slate-600 bg-slate-700/50 text-slate-200 rounded-md"
           />
         </div>
 
-        {/* Submit Button */}
+        {/* ✅ Type submit + onSubmit guarantees it works */}
         <button
           type="submit"
-          disabled={!title || !entry || !mood}
-          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-600 text-white font-medium py-2 px-4 rounded-md transition-colors"
+          disabled={!title || !entry || !mood || isSaving}
+          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-600 text-white font-medium py-2 px-4 rounded-md"
         >
-          Save Entry
+          {isSaving ? 'Saving...' : 'Save Entry'}
         </button>
       </form>
     </div>

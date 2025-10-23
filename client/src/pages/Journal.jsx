@@ -1,25 +1,91 @@
 import React, { useState } from 'react';
 import JournalForm from '../components/JournalForm';
 
+const emotion_map = {
+  0: "sadness",
+  1: "joy",
+  2: "love",
+  3: "anger",
+  4: "fear",
+  5: "surprise"
+};
+
+// 👇 Messages for each emotion
+const emotionMessages = {
+  sadness: "Oh, you seem sad today. Try talking to a friend or take a walk!",
+  joy: "Oh, you are joyful today! That's nice 😊",
+  love: "Love is in the air! Keep spreading kindness ❤️",
+  anger: "Feeling angry? Take a deep breath and relax 😌",
+  fear: "Feeling scared? It's okay to take small steps 🫂",
+  surprise: "Wow, something surprising happened! Exciting! 🎉",
+  unknown: "Thanks for sharing your thoughts!"
+};
+
 const Journal = () => {
   const [journalEntries, setJournalEntries] = useState([]);
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const [lastEmotionMsg, setLastEmotionMsg] = useState(''); // 👈 new state
 
-  const handleJournalSubmit = (journalData) => {
-    const now = new Date();
-    const formattedDate = now.toISOString().split('T')[0];
-    const formattedTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-    const newEntry = {
-      id: journalEntries.length + 1,
-      ...journalData,
-      date: formattedDate,
-      time: formattedTime,
-    };
-
-    setJournalEntries([newEntry, ...journalEntries]);
+  // 🧩 ML Prediction Function
+  const getEmotionPrediction = async (text) => {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
+      });
+      const data = await response.json();
+      return emotion_map[data.prediction] || 'unknown';
+    } catch (error) {
+      console.error('Error getting prediction:', error);
+      return 'unknown';
+    }
   };
+
+  // ✨ Modified Handle Submit with message
+  // ✨ Modified Handle Submit with message
+const handleJournalSubmit = async (journalData) => {
+  console.log("🔥 Submit button clicked");
+  const now = new Date();
+  const formattedDate = now.toISOString().split('T')[0];
+  const formattedTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  // Temporarily add entry
+  const tempEntry = {
+    id: journalEntries.length + 1,
+    ...journalData,
+    mood: 'Loading...',
+    date: formattedDate,
+    time: formattedTime,
+  };
+  setJournalEntries([tempEntry, ...journalEntries]);
+
+  // Get predicted mood
+  let predictedMood = 'unknown';
+  try {
+    const response = await fetch('http://127.0.0.1:5000/predict', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: journalData.entry }),
+    });
+    const data = await response.json();
+    predictedMood = emotion_map[data.prediction] || 'unknown';
+  } catch (error) {
+    console.error('Error getting prediction:', error);
+  }
+
+  // Update entry
+  setJournalEntries((prev) =>
+    prev.map((entry) =>
+      entry.id === tempEntry.id ? { ...entry, mood: predictedMood } : entry
+    )
+  );
+
+  // 👈 Show message based on emotion
+  setLastEmotionMsg(emotionMessages[predictedMood]);
+};
+
 
   const filteredEntries = journalEntries.filter((entry) => {
     const matchesFilter = filter === 'all' || entry.mood === filter;
@@ -41,9 +107,16 @@ const Journal = () => {
       </div>
 
       {/* Journal Form */}
-      <div className="mb-8">
+      <div className="mb-2">
         <JournalForm onSubmit={handleJournalSubmit} />
       </div>
+
+      {/* 👈 Display emotion message */}
+      {lastEmotionMsg && (
+        <div className="mb-6 text-center p-4 bg-blue-100 text-blue-800 rounded-md">
+          {lastEmotionMsg}
+        </div>
+      )}
 
       {/* Filters and Search */}
       <div className="card p-6 mb-8">
@@ -97,29 +170,9 @@ const Journal = () => {
                   <p className="text-sm text-label">
                     {entry.date} • {entry.time}
                   </p>
-                  <p className="text-sm text-slate-600 capitalize">{entry.mood}</p>
-                </div>
-                <div className="flex space-x-2">
-                  <button className="text-label hover:text-blue-400 p-1">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                      />
-                    </svg>
-                  </button>
-                  <button className="text-label hover:text-red-400 p-1">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                      />
-                    </svg>
-                  </button>
+                  <p className="text-sm text-slate-600 capitalize">
+                    {entry.mood || 'No prediction'}
+                  </p>
                 </div>
               </div>
 

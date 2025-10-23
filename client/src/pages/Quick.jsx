@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 const CalmMusic = () => {
   const handlePlaceholder = () => {
-    // Placeholder: integrate Gemini-backed music when API is available
-    alert('Calm music will be available after Gemini integration.');
+    // Placeholder: integrate Spotify-backed music when API is available
+    alert('Calm music will be available after Spotify integration.');
   };
 
   return (
@@ -17,7 +17,7 @@ const CalmMusic = () => {
           <div className="text-medium-contrast text-base mb-6">
             Curated peaceful music to help you relax and focus.
           </div>
-          <button onClick={handlePlaceholder} className="btn-primary text-xl px-10 py-4 w-full sm:w-auto mb-6">
+          <button onClick={handlePlaceholder} className="btn-primary text-xl px-17 py-6 w-full sm:w-auto mb-6">
             Play Calm Music
           </button>
         </div>
@@ -45,10 +45,10 @@ const Meditation = () => {
 
   const phases = {
     ready: { text: 'Ready to begin', duration: 0, instruction: 'Get comfortable and prepare to breathe' },
-    inhale: { text: 'Breathe In', duration: 10, instruction: 'Slowly inhale through your nose' },
-    hold: { text: 'Hold', duration: 5, instruction: 'Hold your breath gently' },
-    exhale: { text: 'Breathe Out', duration: 10, instruction: 'Slowly exhale through your mouth' },
-    pause: { text: 'Pause', duration: 3, instruction: 'Rest before the next breath' }
+    inhale: { text: 'Breathe In', duration: 4, instruction: 'Slowly inhale through your nose' },
+    hold: { text: 'Hold', duration: 4, instruction: 'Hold your breath gently' },
+    exhale: { text: 'Breathe Out', duration: 4, instruction: 'Slowly exhale through your mouth' },
+    pause: { text: 'Pause', duration: 4, instruction: 'Rest before the next breath' }
   };
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const Meditation = () => {
   const startMeditation = () => {
     setIsActive(true);
     setBreathPhase('inhale');
-    setTimeLeft(10);
+    setTimeLeft(4);
     setCycle(0);
   };
 
@@ -144,10 +144,10 @@ const Meditation = () => {
           <div className="text-center">
             <div className="text-medium-contrast text-sm mb-2">Breathing Pattern:</div>
             <ul className="text-label text-sm space-y-1 mb-2">
-              <li>• 10 seconds: Breathe in slowly</li>
-              <li>• 5 seconds: Hold your breath</li>
-              <li>• 10 seconds: Breathe out slowly</li>
-              <li>• 3 seconds: Rest before next cycle</li>
+              <li>• 4 seconds: Breathe in slowly</li>
+              <li>• 4 seconds: Hold your breath</li>
+              <li>• 4 seconds: Breathe out slowly</li>
+              <li>• 4 seconds: Rest before next cycle</li>
             </ul>
           </div>
         </div>
