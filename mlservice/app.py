@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import joblib
 
 # Load your model and vectorizer
@@ -7,6 +8,7 @@ vectorizer = joblib.load('vectorizer.pkl')
 
 # Initialize Flask app
 app = Flask(__name__)
+CORS(app)  # Enable CORS for frontend integration
 
 @app.route('/')
 def home():
@@ -36,8 +38,6 @@ def predict():
     }
 
     return jsonify({'prediction': emotion_map.get(int(prediction), "unknown")})
-
-    return jsonify({'prediction': predicted_label})
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
